@@ -16,7 +16,7 @@
         }
 
         document.querySelector('button')
-            .addEventListener ('click', async () => {
+            .addEventListener ('click', () => {
                 requestNotificationPermission ()
                     .then (canNotify => {
                         if (canNotify) {
