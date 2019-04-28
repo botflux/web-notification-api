@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <button data-notification>Me tenir informer</button>
+    <script>
+        const requestNotificationPermission = () => {
+            return Notification.requestPermission ()
+                .then (result => result === 'granted')
+        }
+
+        document.querySelector('button')
+            .addEventListener ('click', async () => {
+                requestNotificationPermission ()
+                    .then (canNotify => {
+                        if (canNotify) {
+                            const icon = 'https://picsum.photos/id/237/200/300'
+                            const image = 'https://picsum.photos/id/278/210/320'
+                            const text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam totam commodi officiis maxime alias et, dicta eaque dolores neque qui dolor sequi enim mollitia fugiat eos sit tempore impedit ratione.'
+                            const n = new Notification ('My notification', { 
+                                icon, // icon 
+                                body: text, // text,
+                                data: 'Bla bla',
+                                lang: 'fr-FR',
+                                image // big image 
+                            })
+                        }
+                    })
+            })
+    </script>
+</body>
+</html>
